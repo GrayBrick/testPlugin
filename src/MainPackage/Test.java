@@ -55,16 +55,12 @@ public class Test extends JavaPlugin implements Listener
     {
         Player p = e.getPlayer();
 
-        for (Material material : probabilities.keySet())
+        if (probabilities.containsKey(e.getBlock().getType()))
         {
-            if (material.equals(e.getBlock().getType()))
-            {
-                double probability = probabilities.get(material);
+            double probability = probabilities.get(e.getBlock().getType());
 
-                if (Math.random() <= probability)
-                    p.getInventory().addItem(customItem);
-                return ;
-            }
+            if (Math.random() <= probability)
+                p.getInventory().addItem(customItem);
         }
     }
 
